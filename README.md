@@ -4,8 +4,9 @@ This Project is a weather app
 
 ## Feature
 
-In the project directory, you can run:
+Here I will list the features as I work on the project
 
 ### Link
 
+TBA
 
