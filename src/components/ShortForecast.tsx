@@ -61,8 +61,9 @@ const ShortForecast: React.FC = () => {
           const timeItem = dailyTime?.[index];
           const codeItem = dailyWeatherCode?.[index];
           const date = timeItem?.time
-            ? new Date(timeItem.time).toLocaleDateString("en-US", {
-                weekday: "long",
+            ? new Date(timeItem.time).toLocaleString("en-US", {
+                hour: "numeric",
+                hour12: true,
               })
             : "";
           return (
