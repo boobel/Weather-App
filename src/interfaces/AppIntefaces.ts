@@ -3,8 +3,9 @@ interface NavItemProps {
 }
 
 interface HourlyData {
+  temperature_2m: number[];
   time: string[];
-  temperature_2m: string;
+  weathercode: number[];
 }
 
 interface DailyData {
@@ -43,6 +44,7 @@ export type {
   NavItemProps,
   WeatherData,
   DailyData,
+  HourlyData,
   TimeProps,
   TempProps,
   CodeProps,

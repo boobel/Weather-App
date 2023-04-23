@@ -75,6 +75,7 @@ const LongForecast: React.FC = () => {
               weatherCode={codeItem?.weathercode || 0}
               tempMax={tempMaxItem.temp}
               tempMin={tempMinItem?.temp || 0}
+              index={index}
             />
           );
         })}
@@ -91,7 +92,6 @@ const SideContainer = styled.div`
   border: solid 1px #2c2b2b;
   width: 30vw;
   min-width: 250px;
-  height: 95vh;
   border-radius: 1rem;
   background-color: var(--primary-color);
   transition: box-shadow 0.3s ease-in-out;

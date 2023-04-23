@@ -23,7 +23,7 @@ const Header: React.FC = () => {
 
 const Wrapper = styled.div`
   width: 50vw;
-  height: 1vh;
+  height: 2vh;
   border-radius: 1rem;
 `;
 
@@ -34,6 +34,7 @@ const StyledInput = styled.input`
   padding: 0.5rem;
   background-color: var(--primary-color);
   width: 100%;
+  height: 2vh;
   transition: box-shadow 0.3s ease-in-out;
   &:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);

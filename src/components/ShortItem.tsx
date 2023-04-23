@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import clearSky from "../assets/icons/forecast-clear-sky.svg";
 import cloudy from "../assets/icons/forecast-cloudy.svg";
@@ -8,19 +7,17 @@ import foggy from "../assets/icons/forecast-foggy.svg";
 import snow from "../assets/icons/forecast-snow.svg";
 import thunderstorm from "../assets/icons/forecast-thunderstorm.svg";
 
-interface LongItemProps {
+interface ShortItemProps {
   date: string;
-  weatherCode: number;
-  tempMax: number;
-  tempMin: number;
+  codeItem: number;
+  tempItem: number;
   index: number;
 }
 
-const LongItem: React.FC<LongItemProps> = ({
+const ShortItem: React.FC<ShortItemProps> = ({
   date,
-  weatherCode,
-  tempMax,
-  tempMin,
+  tempItem,
+  codeItem,
   index,
 }) => {
   return (
@@ -28,44 +25,35 @@ const LongItem: React.FC<LongItemProps> = ({
       <StyledItem>
         <StyledText>{date}</StyledText>
         <StyledImage
-          src={weatherCodesDict[weatherCode]}
-          alt={weatherCodesDict[weatherCode]}
+          src={weatherCodesDict[codeItem]}
+          alt={weatherCodesDict[codeItem]}
         />
-        <StyledText>
-          {tempMax}/{tempMin} °C
-        </StyledText>
+        <StyledText>{tempItem}°C</StyledText>
       </StyledItem>
-      {index !== 6 && <StyledLine />}
+      {index !== 4 && <StyledLine />}
     </StyledContainer>
   );
 };
 
-const StyledLine = styled.hr`
-  border: none;
-  border-top: 1px solid #ccc;
-  margin: 1rem 0;
-  border-color: grey;
+const StyledContainer = styled.div`
+  display: flex;
 `;
-
-const StyledContainer = styled.div``;
-
 const StyledItem = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  text-align: center;
-  gap: 1rem;
+  gap: 1.5vh;
 `;
-
+const StyledText = styled.span``;
 const StyledImage = styled.img`
   height: auto;
-  width: 15%;
+  width: 30%;
   object-fit: contain;
 `;
-
-const StyledText = styled.span`
-  width: 7rem;
-  font-size: calc(0.5rem + 0.5vw);
+const StyledLine = styled.div`
+  height: 12vh;
+  border: 0.25px solid grey;
 `;
 
 const weatherCodesDict: { [key: number]: string } = {
@@ -99,4 +87,4 @@ const weatherCodesDict: { [key: number]: string } = {
   99: thunderstorm,
 };
 
-export { LongItem };
+export { ShortItem };
