@@ -1,20 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
+import { SearchContext } from "../context/LocationContext";
 
 const Header: React.FC = () => {
-  const [searchInput, setSearchInput] = useState("");
+  const { searchValue, setSearchValue } = useContext(SearchContext);
 
   const handleChange = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
-    setSearchInput(e.target.value);
+    setSearchValue(e.target.value);
+    console.log(searchValue);
   };
+
+  useEffect(() => {
+    console.log(searchValue);
+  }, [searchValue]);
 
   return (
     <Wrapper>
       <StyledInput
         type="text"
         placeholder="Search for cities"
-        value={searchInput}
+        value={searchValue}
         onChange={handleChange}
       />
     </Wrapper>

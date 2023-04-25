@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import { getWeather } from "../api/getWeather";
 import {
@@ -9,6 +9,7 @@ import {
   CodeProps,
 } from "../interfaces/AppIntefaces";
 import { LongItem } from "./LongItem";
+import { SearchContext } from "../context/LocationContext";
 
 const LongForecast: React.FC = () => {
   const [weather, setWeather] = useState<WeatherData>();
@@ -17,17 +18,18 @@ const LongForecast: React.FC = () => {
   const [weeklyTempMax, SetWeeklyTempMax] = useState<TempProps[]>();
   const [weeklyTempMin, SetWeeklyTempMin] = useState<TempProps[]>();
   const [weeklyWeatherCode, setWeeklyWeatherCode] = useState<CodeProps[]>();
+  const { searchValue, setSearchValue } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        setWeather(await getWeather("New York"));
+        setWeather(await getWeather(searchValue));
       } catch (e) {
         console.error(e);
       }
     };
     fetchWeather();
-  }, []);
+  }, [searchValue]);
 
   useEffect(() => {
     if (weather) {

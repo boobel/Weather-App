@@ -11,7 +11,6 @@ const StyledContainer = styled.div`
   align-items: center;
   width: 50vw;
   height: 30vh;
-  background-color: var(red);
 `;
 
 export { MainTile };

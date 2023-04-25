@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { getAir } from "../api/getAir";
 import { AirData, HourlyAirData } from "../interfaces/AppIntefaces";
 import uvIndex from "../assets/icons/uv-index-icon.svg";
 import aQ from "../assets/icons/aq-icon.svg";
 import pm25 from "../assets/icons/pm25-icon.svg";
 import dustIcon from "../assets/icons/dust-icon.svg";
+import { SearchContext } from "../context/LocationContext";
 
 const AirQuality: React.FC = () => {
   const [airQuality, setAirQuality] = useState<AirData>();
@@ -14,6 +15,7 @@ const AirQuality: React.FC = () => {
   const [dailyAQI, setDailyAQI] = useState<number>();
   const [dailyDust, setDailyDust] = useState<number>();
   const [dailyPM, setDailyPM] = useState<number>();
+  const { searchValue, setSearchValue } = useContext(SearchContext);
 
   const computeAverage = (arr: any[], key: string) => {
     const sum = arr.reduce((acc: any, val: any) => acc + val[key], 0);
@@ -24,13 +26,13 @@ const AirQuality: React.FC = () => {
   useEffect(() => {
     const fetchAirQuality = async () => {
       try {
-        setAirQuality(await getAir("New York"));
+        setAirQuality(await getAir(searchValue));
       } catch (e) {
         console.error(e);
       }
     };
     fetchAirQuality();
-  }, []);
+  }, [searchValue]);
 
   useEffect(() => {
     if (airQuality) {
@@ -82,7 +84,7 @@ const AirQuality: React.FC = () => {
             <StyledImage src={dustIcon} alt="uv-index-icon" />
             <StyledText> Dust </StyledText>
           </StyledHeader>
-          <StyledReading>{dailyDust}</StyledReading>
+          <StyledReading>{dailyDust?.toFixed(2)}</StyledReading>
         </StyledCell>
         <StyledCell>
           <StyledHeader>
@@ -103,7 +105,7 @@ const StyledAirQuality = styled.div`
   align-items: center;
   border: solid 1px #2c2b2b;
   width: 50vw;
-  height: 30vh;
+  padding-bottom: 2vw;
   border-radius: 1rem;
   background-color: var(--primary-color);
 `;
@@ -118,7 +120,7 @@ const StyledContainer = styled.div`
 const StyledCell = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 20vw;
 `;
@@ -127,17 +129,16 @@ const StyledHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1vw;
-  width: 10vw;
+  gap: 0.5vw;
 `;
 
 const StyledText = styled.span`
   font-weight: 700;
-  font-size: 125%;
+  font-size: 1vw;
 `;
 
 const StyledReading = styled.span`
-  font-size: 150%;
+  font-size: 2vw;
   font-weight: 900;
 `;
 

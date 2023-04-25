@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  gap: 2rem;
+  gap: 2vw;
 `;
 
 const Main = styled.div`

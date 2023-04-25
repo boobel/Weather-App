@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { getWeather } from "../api/getWeather";
 import {
   HourlyWeatherData,
@@ -9,6 +9,7 @@ import {
   CodeProps,
 } from "../interfaces/AppIntefaces";
 import { ShortItem } from "./ShortItem";
+import { SearchContext } from "../context/LocationContext";
 
 const ShortForecast: React.FC = () => {
   const [weather, setWeather] = useState<WeatherData>();
@@ -16,17 +17,18 @@ const ShortForecast: React.FC = () => {
   const [dailyTime, SetDailyTime] = useState<TimeProps[]>();
   const [dailyTemp, SetDailyTemp] = useState<TempProps[]>();
   const [dailyWeatherCode, setDailyWeatherCode] = useState<CodeProps[]>();
+  const { searchValue, setSearchValue } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        setWeather(await getWeather("New York"));
+        setWeather(await getWeather(searchValue));
       } catch (e) {
         console.error(e);
       }
     };
     fetchWeather();
-  }, []);
+  }, [searchValue]);
 
   useEffect(() => {
     if (weather) {
