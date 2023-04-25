@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { getWeather } from "../api/getWeather";
 import {
   WeatherData,
-  DailyData,
+  DailyWeatherData,
   TimeProps,
   TempProps,
   CodeProps,
@@ -12,7 +12,7 @@ import { LongItem } from "./LongItem";
 
 const LongForecast: React.FC = () => {
   const [weather, setWeather] = useState<WeatherData>();
-  const [weeklyForecast, SetWeeklyForecast] = useState<DailyData>();
+  const [weeklyForecast, SetWeeklyForecast] = useState<DailyWeatherData>();
   const [weeklyTime, SetWeeklyTime] = useState<TimeProps[]>();
   const [weeklyTempMax, SetWeeklyTempMax] = useState<TempProps[]>();
   const [weeklyTempMin, SetWeeklyTempMin] = useState<TempProps[]>();

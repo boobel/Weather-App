@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import { getWeather } from "../api/getWeather";
 import {
-  HourlyData,
+  HourlyWeatherData,
   WeatherData,
   TimeProps,
   TempProps,
@@ -12,7 +12,7 @@ import { ShortItem } from "./ShortItem";
 
 const ShortForecast: React.FC = () => {
   const [weather, setWeather] = useState<WeatherData>();
-  const [dailyForecast, SetDailyForecast] = useState<HourlyData>();
+  const [dailyForecast, SetDailyForecast] = useState<HourlyWeatherData>();
   const [dailyTime, SetDailyTime] = useState<TimeProps[]>();
   const [dailyTemp, SetDailyTemp] = useState<TempProps[]>();
   const [dailyWeatherCode, setDailyWeatherCode] = useState<CodeProps[]>();
