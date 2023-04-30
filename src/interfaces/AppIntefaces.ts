@@ -6,6 +6,7 @@ interface HourlyWeatherData {
   temperature_2m: number[];
   time: string[];
   weathercode: number[];
+  rain: number[];
 }
 
 interface HourlyAirData {
@@ -33,6 +34,10 @@ interface TempProps {
 
 interface CodeProps {
   weathercode: number;
+}
+
+interface RainProps {
+  rain: number;
 }
 
 interface WeatherData {
@@ -69,4 +74,5 @@ export type {
   TempProps,
   CodeProps,
   AirData,
+  RainProps,
 };

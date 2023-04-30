@@ -1,26 +1,35 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { SearchContext } from "../context/LocationContext";
 
 const Header: React.FC = () => {
-  const { searchValue, setSearchValue } = useContext(SearchContext);
+  const { setSearchValue } = useContext(SearchContext);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (value: string) => {
+    setSearchValue(value);
+    console.log(value);
+  };
+
+  const delayedHandleSearch = debounce(handleSearch, 2000);
 
   const handleChange = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
-    setSearchValue(e.target.value);
-    console.log(searchValue);
+    const value = e.target.value;
+    setSearchTerm(value);
+    delayedHandleSearch(value);
   };
 
   useEffect(() => {
-    console.log(searchValue);
-  }, [searchValue]);
+    console.log(searchTerm);
+  }, [searchTerm]);
 
   return (
     <Wrapper>
       <StyledInput
         type="text"
         placeholder="Search for cities"
-        value={searchValue}
+        value={searchTerm}
         onChange={handleChange}
       />
     </Wrapper>
@@ -46,5 +55,15 @@ const StyledInput = styled.input`
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   }
 `;
+
+function debounce(func: (value: string) => void, delay: number) {
+  let timerId: ReturnType<typeof setTimeout>;
+  return function (value: string) {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      func(value);
+    }, delay);
+  };
+}
 
 export { Header };

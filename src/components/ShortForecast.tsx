@@ -17,7 +17,7 @@ const ShortForecast: React.FC = () => {
   const [dailyTime, SetDailyTime] = useState<TimeProps[]>();
   const [dailyTemp, SetDailyTemp] = useState<TempProps[]>();
   const [dailyWeatherCode, setDailyWeatherCode] = useState<CodeProps[]>();
-  const { searchValue, setSearchValue } = useContext(SearchContext);
+  const { searchValue } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchWeather = async () => {
