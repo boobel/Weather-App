@@ -19,7 +19,7 @@ import thunderstorm from "../assets/icons/forecast-thunderstorm.svg";
 
 const MainTile: React.FC = () => {
   const [weather, setWeather] = useState<WeatherData>();
-  const { searchValue, setSearchValue } = useContext(SearchContext);
+  const { searchValue } = useContext(SearchContext);
   const [dailyForecast, SetDailyForecast] = useState<HourlyWeatherData>();
   const [dailyWeatherCode, setDailyWeatherCode] = useState<CodeProps[]>();
   const [dailyTemp, SetDailyTemp] = useState<TempProps[]>();
@@ -40,7 +40,6 @@ const MainTile: React.FC = () => {
     if (weather) {
       SetDailyForecast(weather.hourly);
     }
-    console.log(dailyForecast);
   }, [weather]);
 
   useEffect(() => {
@@ -57,7 +56,6 @@ const MainTile: React.FC = () => {
       SetDailyRain(rains);
       setDailyWeatherCode(weatherCodes);
       SetDailyTemp(temps);
-      console.log(dailyRain);
     }
   }, []);
 
@@ -85,33 +83,56 @@ const MainTile: React.FC = () => {
   const middleWeatherCode = weatherMiddleElement() || { weathercode: 0 };
 
   return (
-    <>
-      <StyledContainer>{searchValue}</StyledContainer>
-      <div>Chance of rain: {avgRain.toFixed(2)}</div>
-      <div>{avgTemp.toFixed(0)}</div>
+    <StyledContainer>
+      <StyledTextHolder>
+        <StyledLocation>{searchValue}</StyledLocation>
+        <span>Chance of rain: {avgRain.toFixed(2)}</span>
+      </StyledTextHolder>
       <StyledImage
         src={
           middleWeatherCode && weatherCodesDict[middleWeatherCode.weathercode]
         }
-        alt="weather"
+        alt="weather icon"
       />
-    </>
+      <StyledTemperature>{avgTemp.toFixed(0)}°C</StyledTemperature>
+    </StyledContainer>
   );
 };
 
-const StyledContainer = styled.div`
+const StyledLocation = styled.span`
+  font-size: 200%;
+  font-weight: 600;
+`;
+
+const StyledTemperature = styled.span`
+  font-size: 250%;
+  font-weight: 600;
+  align-self: flex-start;
+`;
+
+const StyledTextHolder = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+`;
+
+const StyledContainer = styled.section`
+  display: grid;
+  grid-gap: 0rem;
+  box-sizing: border-box;
+  align-items: space-between;
+  justify-items: start;
+  grid-template-columns: repeat(2, 2fr);
   width: 50vw;
   height: 30vh;
+  padding: 2vw 3vh;
 `;
 
 const StyledImage = styled.img`
   height: auto;
-  width: 15%;
+  width: 50%;
   object-fit: contain;
+  justify-self: center;
+  align-self: end;
 `;
 
 const weatherCodesDict: { [key: number]: string } = {

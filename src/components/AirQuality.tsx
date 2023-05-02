@@ -15,7 +15,7 @@ const AirQuality: React.FC = () => {
   const [dailyAQI, setDailyAQI] = useState<number>();
   const [dailyDust, setDailyDust] = useState<number>();
   const [dailyPM, setDailyPM] = useState<number>();
-  const { searchValue, setSearchValue } = useContext(SearchContext);
+  const { searchValue } = useContext(SearchContext);
 
   const computeAverage = (arr: any[], key: string) => {
     const sum = arr.reduce((acc: any, val: any) => acc + val[key], 0);
@@ -98,7 +98,7 @@ const AirQuality: React.FC = () => {
   );
 };
 
-const StyledAirQuality = styled.div`
+const StyledAirQuality = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

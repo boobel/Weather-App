@@ -82,7 +82,7 @@ const ShortForecast: React.FC = () => {
   );
 };
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.article`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -90,7 +90,7 @@ const StyledContainer = styled.div`
   width: 90%;
 `;
 
-const StyledForecast = styled.div`
+const StyledForecast = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

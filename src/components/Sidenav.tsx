@@ -3,6 +3,7 @@ import weatherIcon from "../assets/icons/weather-nav-icon.svg";
 import settingsIcon from "../assets/icons/settings-nav-icon.svg";
 import citiesIcon from "../assets/icons/list-nav-icon.svg";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Sidenav: React.FC = () => {
   return (
@@ -10,23 +11,40 @@ const Sidenav: React.FC = () => {
       <StyledLogo>☔</StyledLogo>
       <StyledIconList>
         <StyledItem>
-          <StyledImage src={weatherIcon} alt="weather icon" />
-          <span>Weather</span>
+          <StyledLink to="/">
+            <StyledImage src={weatherIcon} alt="weather icon" />
+            <span>Weather</span>
+          </StyledLink>
         </StyledItem>
         <StyledItem>
           <StyledImage src={citiesIcon} alt="cities icon" />
           <span>Cities</span>
         </StyledItem>
         <StyledItem>
-          <StyledImage src={settingsIcon} alt="settings icon" />
-          <span>Settings</span>
+          <StyledLink to="/settings">
+            <StyledImage src={settingsIcon} alt="settings icon" />
+            <span>Settings</span>
+          </StyledLink>
         </StyledItem>
       </StyledIconList>
     </SideContainer>
   );
 };
 
-const StyledLogo = styled.div`
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #afa2a2;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+`;
+
+const StyledLogo = styled.figure`
   font-size: calc(2rem + 1.5vw);
   margin: 3vh 2vw;
 `;
@@ -61,7 +79,7 @@ const StyledImage = styled.img`
   object-fit: contain;
 `;
 
-const SideContainer = styled.div`
+const SideContainer = styled.aside`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

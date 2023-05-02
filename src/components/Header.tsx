@@ -36,7 +36,7 @@ const Header: React.FC = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   width: 50vw;
   height: 2vh;
   border-radius: 1rem;

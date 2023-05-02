@@ -18,7 +18,7 @@ const LongForecast: React.FC = () => {
   const [weeklyTempMax, SetWeeklyTempMax] = useState<TempProps[]>();
   const [weeklyTempMin, SetWeeklyTempMin] = useState<TempProps[]>();
   const [weeklyWeatherCode, setWeeklyWeatherCode] = useState<CodeProps[]>();
-  const { searchValue, setSearchValue } = useContext(SearchContext);
+  const { searchValue } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -86,7 +86,7 @@ const LongForecast: React.FC = () => {
   );
 };
 
-const SideContainer = styled.div`
+const SideContainer = styled.aside`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -102,7 +102,7 @@ const SideContainer = styled.div`
   }
 `;
 
-const ForecastCointainer = styled.div`
+const ForecastCointainer = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

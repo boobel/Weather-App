@@ -47,7 +47,7 @@ const StyledLine = styled.hr`
   border-color: grey;
 `;
 
-const StyledContainer = styled.div``;
+const StyledContainer = styled.section``;
 
 const StyledItem = styled.div`
   display: flex;

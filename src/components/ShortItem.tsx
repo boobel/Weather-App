@@ -35,7 +35,7 @@ const ShortItem: React.FC<ShortItemProps> = ({
   );
 };
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.section`
   display: flex;
 `;
 const StyledItem = styled.div`
@@ -46,6 +46,7 @@ const StyledItem = styled.div`
   gap: 1.5vh;
 `;
 const StyledText = styled.span``;
+
 const StyledImage = styled.img`
   height: auto;
   width: 30%;
