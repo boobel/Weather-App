@@ -4,12 +4,23 @@ import { Sidenav } from "../components/Sidenav";
 import { Header } from "../components/Header";
 import { PremiumBanner } from "../components/PremiumBanner";
 import { NewsletterBanner } from "../components/NewsletterBanner";
+import { UnitsSettings } from "../components/UnitsSettings";
+import { NotificatonSetting } from "../components/NotificationSettings";
+import { GeneralSettings } from "../components/GeneralSettings";
 
 const Settings: React.FC = () => {
   return (
     <Wrapper>
       <Sidenav />
-      <Header />
+      <Main>
+        <Header />
+        <StyledHeader>Units</StyledHeader>
+        <UnitsSettings />
+        <StyledHeader>Notifications</StyledHeader>
+        <NotificatonSetting />
+        <StyledHeader>General</StyledHeader>
+        <GeneralSettings />
+      </Main>
       <RightSideContent>
         <PremiumBanner />
         <NewsletterBanner />
@@ -17,6 +28,11 @@ const Settings: React.FC = () => {
     </Wrapper>
   );
 };
+
+const Main = styled.section`
+  display: flex;
+  flex-direction: column;
+`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,5 +46,7 @@ const RightSideContent = styled.aside`
   flex-direction: column;
   gap: 2vh;
 `;
+
+const StyledHeader = styled.h1``;
 
 export { Settings };

@@ -37,6 +37,7 @@ const StyledHeaderBig = styled.h1`
 
 const StyledHeaderSmall = styled.h3`
   margin: 1vh;
+  text-align: center;
 `;
 
 const StyledLine = styled.hr`
