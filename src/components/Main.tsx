@@ -117,14 +117,12 @@ const StyledTextHolder = styled.div`
 
 const StyledContainer = styled.section`
   display: grid;
-  grid-gap: 0rem;
   box-sizing: border-box;
   align-items: space-between;
   justify-items: start;
   grid-template-columns: repeat(2, 2fr);
   width: 50vw;
-  height: 30vh;
-  padding: 2vw 3vh;
+  max-height: fit-content;
 `;
 
 const StyledImage = styled.img`

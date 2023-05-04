@@ -105,7 +105,6 @@ const StyledAirQuality = styled.section`
   align-items: center;
   border: solid 1px #2c2b2b;
   width: 50vw;
-  height: 25vh;
   padding-bottom: 2vw;
   border-radius: 1rem;
   background-color: var(--primary-color);

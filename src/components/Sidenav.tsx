@@ -15,7 +15,6 @@ const Sidenav: React.FC = () => {
             <span>Weather</span>
           </StyledLink>
         </StyledItem>
-
         <StyledItem>
           <StyledLink to="/settings">
             <StyledImage src={settingsIcon} alt="settings icon" />
@@ -60,6 +59,7 @@ const StyledItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 5vw;
   justify-content: center;
   transition: all 0.5s ease-in;
   &:hover {
