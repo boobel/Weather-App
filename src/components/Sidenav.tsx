@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import weatherIcon from "../assets/icons/weather-nav-icon.svg";
 import settingsIcon from "../assets/icons/settings-nav-icon.svg";
-import citiesIcon from "../assets/icons/list-nav-icon.svg";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -16,10 +15,7 @@ const Sidenav: React.FC = () => {
             <span>Weather</span>
           </StyledLink>
         </StyledItem>
-        <StyledItem>
-          <StyledImage src={citiesIcon} alt="cities icon" />
-          <span>Cities</span>
-        </StyledItem>
+
         <StyledItem>
           <StyledLink to="/settings">
             <StyledImage src={settingsIcon} alt="settings icon" />
